@@ -1,5 +1,7 @@
 # Hand-in-Period-1
 
+https://docs.google.com/document/d/1bAbO2EheHi0F3VN76vawukiCL5hxEydSfuq9vo-Bbgk/edit
+
 ## Explain and Reflect
 
 - Explain the differences between Java and JavaScript. You should include both topics related to the fact that Java is a compiled language and JavaScript a scripted language, and general differences in language features.
