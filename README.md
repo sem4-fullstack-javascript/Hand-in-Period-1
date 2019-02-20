@@ -86,7 +86,7 @@ console.log(x)
 x = 10
 ```
 output
-```js
+```
 undefined
 ```
 The declaration is hoisted not the assignment.  
@@ -105,7 +105,7 @@ function sayHi(){
 sayHi()
 ```
 output
-```js
+```
 Hi
 ```
 
@@ -122,7 +122,11 @@ function Car(make,model) {
     },0)};
 }
 var car = new Car("Volvo","V70");
-car.show(); //undefined, undefined
+car.show();
+```
+output
+```
+undefined, undefined
 ```
 if a function is defined as a arrow function it does not get its own `this`
 ```js
@@ -134,12 +138,66 @@ function Car(make,model) {
     },0)};
 }
 var car = new Car("Volvo","V70");
-car.show(); //Volvo, V70
+car.show();
+```
+output
+```
+Volvo, V70
 ```
 
 ### Function Closures and the JavaScript Module Pattern
 
+#### Closures
 
+A closure is an inner function that has access to the outer (enclosing) function's variables—scope chain. The closure has three scope chains: it has access to its own scope (variables defined between its curly brackets), it has access to the outer function's variables, and it has access to the global variables.  
+The inner function has access not only to the outer function’s variables, but also to the outer function’s parameters. Note that the inner function cannot call the outer function’s arguments object, however, even though it can call the outer function’s parameters directly.
+
+```js
+function showName (firstName, lastName) {
+    var nameIntro = "Your name is ";
+        // this inner function has access to the outer function's variables, including the parameter
+    function makeFullName () {
+        return nameIntro + firstName + " " + lastName; 
+    }
+    return makeFullName ();
+}
+showName ("Michael", "Jackson");
+```
+output
+```
+Your name is Michael Jackson
+```
+
+#### Module Pattern
+
+The Module pattern was originally defined as a way to provide both private and public encapsulation for classes in conventional software engineering.  
+In JavaScript, the Module pattern is used to further emulate the concept of classes in such a way that we're able to include both public/private methods and variables inside a single object, thus shielding particular parts from the global scope. What this results in is a reduction in the likelihood of our function names conflicting with other functions defined in additional scripts on the page.
+
+```js
+var modularpattern = (function() {
+    // your module code goes here
+    var sum = 0 ;
+
+    return {
+        add:function() {
+            sum = sum + 1;
+            return sum;
+        },
+        reset:function() {
+            return sum = 0;    
+        }  
+    }   
+}());
+console.log(modularpattern.add())
+console.log(modularpattern.add())
+console.log(modularpattern.reset())
+```
+output
+```
+1
+2
+0
+```
 
 ### Immediately-Invoked Function Expressions (IIFE)
 
@@ -149,12 +207,19 @@ Immediately-Invoked Functions are functions that are invoked when the script rea
     console.log('I am an Immediately-Invoked Function Expression')
 })()
 
-(() => {
+!(() => {
  console.log('I too am an Immediately-Invoked Function Expression')
 })()
 ```
+output
+```
+I am an Immediately-Invoked Function Expression
+I too am an Immediately-Invoked Function Expression
+```
 
 ### JavaScripts Prototype
+
+
 
 ### User-defined Callback Functions (writing your own functions that take a callback)
 
