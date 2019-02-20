@@ -1,6 +1,6 @@
 # Hand-in-Period-1
 
-[Hand-in sheet](https://docs.google.com/document/d/1bAbO2EheHi0F3VN76vawukiCL5hxEydSfuq9vo-Bbgk/edit)
+[Hand-in](https://docs.google.com/document/d/1bAbO2EheHi0F3VN76vawukiCL5hxEydSfuq9vo-Bbgk/edit)
 
 ## Explain and Reflect
 
