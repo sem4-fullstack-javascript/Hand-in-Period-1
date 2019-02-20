@@ -111,9 +111,35 @@ Hi
 
 ### this in JavaScript and how it differs from what we know from Java/.net.
 
-`this` in JavaScript 
+`this` in JavaScript typically refers to the function it is called in, while in Java it refers to the class.
+
+```js
+function Car(make,model) {
+    this.make = make;
+    this.model = model;
+    this.show = function(){setTimeout(function(){ //This function gets it's own "this"
+        console.log(this.make + ", " + this.model);
+    },0)};
+}
+var car = new Car("Volvo","V70");
+car.show(); //undefined, undefined
+```
+if a function is defined as a arrow function it does not get its own `this`
+```js
+function Car(make,model) {
+    this.make = make;
+    this.model = model;
+    this.show = function(){setTimeout(()=>{ //This function doesn't gets it's own "this"
+        console.log(this.make + ", " + this.model);
+    },0)};
+}
+var car = new Car("Volvo","V70");
+car.show(); //Volvo, V70
+```
 
 ### Function Closures and the JavaScript Module Pattern
+
+
 
 ### Immediately-Invoked Function Expressions (IIFE)
 
