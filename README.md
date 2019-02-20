@@ -52,9 +52,23 @@ Although events look quite similar to callbacks, the difference lies in the fact
 
 ### Explain (some) of the purposes with the tools Babel and WebPack, using  examples from the exercises
 
+#### Babel
 
+Babel is a JavaScript transpiler that converts edge JavaScript into plain old ES5 JavaScript that can run in any browser (even the old ones).
+
+It makes available all the syntactical sugar that was added to JavaScript with the new ES6 specification, including classes, fat arrows and multiline strings.
+
+#### WebPack
+
+ES6 modules allow the JavaScript developer to break their code up into manageable chunks, but the consequence of this is that those chunks have to be served up to the requesting browser, potentially adding dozens of additional HTTP requests back to the server — something we really ought to be looking to avoid. This is where webpack comes in.
+
+Webpack is a module bundler. Its primary purpose is to process your application by tracking down all its dependencies, then package them all up into one or more bundles that can be run in the browser.
 
 ### Explain the purpose of “use strict” and Linters, exemplified with ESLint
+
+The "use strict" directive was new in ECMAScript version 5. It is not a statement, but a literal expression, ignored by earlier versions of JavaScript. The purpose of "use strict" is to indicate that the code should be executed in "strict mode". With strict mode, you can not, for example, use undeclared variables.
+
+"Use strict" and linters are tools to protect us form ourselves. They warn us when our code contains a syntax error, and tells us if the variable we defined or assigned a value isn't being used. This improves the quality of our code, and may save time we would have use on debuging.
 
 ## Explain using sufficient code examples the following features in JavaScript
 
@@ -96,6 +110,8 @@ Hi
 ```
 
 ### this in JavaScript and how it differs from what we know from Java/.net.
+
+`this` in JavaScript 
 
 ### Function Closures and the JavaScript Module Pattern
 
