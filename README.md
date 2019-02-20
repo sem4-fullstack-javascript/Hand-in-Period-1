@@ -27,11 +27,32 @@ TypeScript is a strict syntactical superset of JavaScript, and adds optional sta
 
 ### Explain generally about node.js, when it “makes sense” and npm, and how it “fits” into the node echo system.
 
+Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications.  
+It uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 
+Node vs Java - similarities
+- Runs on a Virtual Machine
+- Runs on multiple platforms
+- You must include packages before you can use them
+- You must obtain packages not included in the base installation before you can use them
+
+npm (short for Node.js package manager) is a package manager for the JavaScript programming language. It is the default package manager for the JavaScript runtime environment Node.js. It consists of a command line client, also called npm, and an online database of public and paid-for private packages, called the npm registry. The registry is accessed via the client, and the available packages can be browsed and searched via the npm website.
+
+Many modules is designed to do one thing, the Node echo system encourages to use such modules instead of one module that does everything
 
 ### Explain about the Event Loop in Node.js
 
+Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks. Every API of Node.js is asynchronous and being single-threaded, they use async function calls to maintain concurrency. Node uses observer pattern. Node thread keeps an event loop and whenever a task gets completed, it fires the corresponding event which signals the event-listener function to execute.
+
+Node.js uses events heavily and it is also one of the reasons why Node.js is pretty fast compared to other similar technologies. As soon as Node starts its server, it simply initiates its variables, declares functions and then simply waits for the event to occur.
+
+In an event-driven application, there is generally a main loop that listens for events, and then triggers a callback function when one of those events is detected.
+
+Although events look quite similar to callbacks, the difference lies in the fact that callback functions are called when an asynchronous function returns its result, whereas event handling works on the observer pattern. The functions that listen to events act as Observers. Whenever an event gets fired, its listener function starts executing.
+
 ### Explain (some) of the purposes with the tools Babel and WebPack, using  examples from the exercises
+
+
 
 ### Explain the purpose of “use strict” and Linters, exemplified with ESLint
 
