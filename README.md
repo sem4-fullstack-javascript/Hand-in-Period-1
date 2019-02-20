@@ -274,7 +274,7 @@ const mappedNumbers = numbers.map((e) => e * 2)
 console.log(mappedNumbers);
 ```
 output
-```js
+```
 [4, 6, 8, 10]
 ```
 
@@ -285,7 +285,7 @@ const filteredNames = names.filter(name => name.length <= 3)
 console.log(filteredNames)
 ```
 output
-```js
+```
 ["Jan", "Bo"]
 ```
 
@@ -305,11 +305,31 @@ const reducer = (acc, cur, idx, src) => accumulator + currentValue)
 console.log(numbers.reduce(reducer);
 ```
 output
-```js
+```
 14
 ```
 
 ### Provide examples of user-defined reusable modules implemented in Node.js
+
+```js
+exports.makeCounter = function(){
+    let privateCounter = 0
+    function changeBy(val){
+        privateCounter += val
+    }
+    return {
+        increment: function(){
+            changeBy(1)
+        },
+        decrement: function(){
+            changeBy(-1)
+        },
+        value: function(){
+            return privateCounter
+        }
+    }
+}
+```
 
 ## ES6,7,8... and TypeScript
 
