@@ -219,9 +219,51 @@ I too am an Immediately-Invoked Function Expression
 
 ### JavaScripts Prototype
 
-
+```js
+const names = ['Lars', 'Jan', 'Peter', 'Bo', 'Frederik']
+names.prototype.myMap = function(callback){
+    let arr = []
+    for(let i = 0; i < this.length; i++){
+            arr.push(callback(this[i]))
+    }
+    return arr
+}
+```
+```js
+const names = ['Lars', 'Jan', 'Peter', 'Bo', 'Frederik']
+names.prototype.myFilter = function(callback){
+    let arr = []
+    for(let i = 0; i < this.length; i++){
+        if(callback(this[i])){
+            arr.push(this[i])
+        }
+    }
+    return arr
+}
+```
 
 ### User-defined Callback Functions (writing your own functions that take a callback)
+
+```js
+function myFilter(callback){
+    let arr = []
+    for(let i = 0; i < this.length; i++){
+        if(callback(this[i])){
+            arr.push(this[i])
+        }
+    }
+    return arr
+}
+```
+```js
+function myMap(callback){
+    let arr = []
+    for(let i = 0; i < this.length; i++){
+            arr.push(callback(this[i]))
+    }
+    return arr
+}
+```
 
 ### Explain the methods map, filter and reduce
 
