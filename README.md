@@ -312,7 +312,7 @@ output
 ### Provide examples of user-defined reusable modules implemented in Node.js
 
 ```js
-exports.makeCounter = function(){
+module.exports.makeCounter = function(){
     let privateCounter = 0
     function changeBy(val){
         privateCounter += val
