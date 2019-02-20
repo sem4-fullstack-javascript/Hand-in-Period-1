@@ -1,8 +1,6 @@
-https://sem4-fullstack-javascript.github.io/Hand-in-Period-1/
-
 # Hand-in-Period-1
 
-https://docs.google.com/document/d/1bAbO2EheHi0F3VN76vawukiCL5hxEydSfuq9vo-Bbgk/edit
+[Hand-in sheet](https://docs.google.com/document/d/1bAbO2EheHi0F3VN76vawukiCL5hxEydSfuq9vo-Bbgk/edit)
 
 ## Explain and Reflect
 
