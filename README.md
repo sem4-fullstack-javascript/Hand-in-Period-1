@@ -537,6 +537,7 @@ Each proposal for an ECMAScript feature goes through the following maturity stag
 **What is it?** The proposal is ready to be included in the standard.
 
 **What’s required?** The following things are needed before a proposal can reach this stage:
+
 - Test 262 acceptance tests (roughly, unit tests for the language feature, written in JavaScript).
 - Two spec-compliant shipping implementations that pass the tests.
 - Significant practical experience with the implementations.
@@ -548,7 +549,44 @@ Each proposal for an ECMAScript feature goes through the following maturity stag
 
 ### Explain about promises in ES-6 including, the problems they solve, a quick explanation of the Promise API and:
 
+The `Promise` object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.  
+A `Promise` is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.  
+A `Promise` is in one of these states:
+
+- pending: initial state, neither fulfilled nor rejected.
+- fulfilled: meaning that the operation completed successfully.
+- rejected: meaning that the operation failed.
+
+A pending promise can either be *fulfilled* with a value, or *rejected* with a reason (error). When either of these options happens, the associated handlers queued up by a promise's `then` method are called.  
+If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.
+
+As the `Promise.prototype.then()` and `Promise.prototype.catch()` methods return promises, they can be chained.
+
 #### Example(s) that demonstrate how to avoid the callback hell  (“Pyramid of Doom")
+
+```js
+doSomething(function(responseOne) {
+    doSomethingElse(responseOne, function(responseTwo, err) {
+        if (err) { handleError(err); }
+        doMoreStuff(responseTwo, function(responseThree, err) {
+            if (err) { handleAnotherError(err); }
+            doFinalThing(responseThree, function(err) {
+                if (err) { handleAnotherError(err); }
+                // Complete
+            }); // end doFinalThing
+        }); // end doMoreStuff
+    }); // end doSomethingElse
+}); // end doSomething
+```
+
+```js
+doSomething()
+.then(doSomethingElse)
+.catch(handleError)
+.then(doMoreStuff)
+.then(doFinalThing)
+.catch(handleAnotherError)
+```
 
 #### Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel
 
