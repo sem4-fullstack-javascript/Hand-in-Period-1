@@ -591,23 +591,49 @@ doSomething()
 
 #### Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel
 
+
+
 #### Example(s) that demonstrate how to implement our own promise-solutions.
 
 ```js
-new Promise((resolve, reject) => {
-    // ...
-    if (err) return reject(err)
-    else return resolve(res)
-})
+function get(url) {
+  return new Promise(function(resolve, reject) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
+    req.onload = function() {
+      if (req.status == 200) { 
+          resolve(req.response); /* PROMISE RESOLVED */
+      } else { 
+          reject(Error(req.statusText)); /* PROMISE REJECTED */
+      }
+    };
+    req.onerror = function() { reject(Error("Network Error")); };
+    req.send();
+  });
+}
 ```
 
 #### Example(s) that demonstrate error handling with promises
 
+Since both the success and error functions are optional, we can split them into two `.then()`s for better readability.
+
 ```js
-new Promise((resolve, reject) => {
-    // ...
-    if (err) return reject(err)
-    else return resolve(res)
+get(url)
+.then(function(response) {
+    /* successFunction */
+}, undefined)
+.then(undefined, function(err) {
+    /* errorFunction */
+})
+```
+To make things even more readable, we make use of the `.catch()` method, which is a shorthand for a `.then(undefined, errorFunction)`.
+```js
+get(url)
+.then(function(response) {
+    /* successFunction */
+})
+.catch(function(err) {
+    /* errorFunction */
 })
 ```
 
