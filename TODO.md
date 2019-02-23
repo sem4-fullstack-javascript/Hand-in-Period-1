@@ -1,4 +1,4 @@
-README.md line 493 Provide examples with es-next, running in a browser, using Babel and Webpack  
+README.md line 493 [Provide examples with es-next, running in a browser, using Babel and Webpack](Hand-in-Period-1#provide-examples-with-es-next-running-in-a-browser-using-babel-and-webpack)  
 README.md line 592 Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel  
 README.md line 671 Serial or parallel execution with async/await
 
