@@ -564,6 +564,7 @@ As the `Promise.prototype.then()` and `Promise.prototype.catch()` methods return
 
 #### Example(s) that demonstrate how to avoid the callback hell  (“Pyramid of Doom")
 
+**Pyramid of Doom**
 ```js
 doSomething(function(responseOne) {
     doSomethingElse(responseOne, function(responseTwo, err) {
@@ -578,7 +579,7 @@ doSomething(function(responseOne) {
     }); // end doSomethingElse
 }); // end doSomething
 ```
-
+**Solution**
 ```js
 doSomething()
 .then(doSomethingElse)
