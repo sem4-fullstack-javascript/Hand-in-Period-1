@@ -492,7 +492,7 @@ JavaScript Object inheritance is Prototype based. ES6 classes are just syntactic
 
 ### Provide examples with es-next, running in a browser, using Babel and Webpack
 
-[TODO](TODO.md)
+[/TODO/](TODO.md)
 
 ### Provide a number of examples to demonstrate the benefits of using TypeScript, including, types, interfaces, classes and generics
 
@@ -591,7 +591,7 @@ doSomething()
 
 #### Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel
 
-[TODO](TODO.md)
+[/TODO/](TODO.md)
 
 #### Example(s) that demonstrate how to implement our own promise-solutions.
 
@@ -670,4 +670,4 @@ function async myFunc() {
 
 #### Serial or parallel execution with async/await.
 
-[TODO](TODO.md)
+[/TODO/](TODO.md)
