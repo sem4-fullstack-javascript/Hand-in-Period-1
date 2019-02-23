@@ -335,11 +335,164 @@ module.exports.makeCounter = function(){
 
 ### Provide examples and explain the es2015 features: let, arrow functions, this, rest parameters, de-structuring assignments, maps/sets etc.
 
+#### let and const
+
+With ES6 it is now possible to declare a variable that behaves more like we expect them to behave. While a `var` declaration is hoisted to the top of its scope a `let` or a `const` declaration is not hoisted and behaves like we know variable declarations from Java. The difference between a `let` and a `const` is that the `let` can be assigned a new value and the `const` can't.
+
+#### arrow functions
+
+```js
+// Defining a function
+function addNumbers(a, b) {
+    return a + b;
+}
+// Using anonymous function
+var addNumbers = function(a, b) {
+    return a + b;
+}
+// using Arrow Functions with return statement
+var addNumbers = (a, b) => {
+    return a + b;
+}
+// Using Arrow Functions without return statements and without curly braces
+var addNumbers = (a, b) => a + b; // implicit return statement
+```
+
+#### `this`
+
+`this`is a unique keyword whose value changes depending on how it is called. When it is called outside a function, `this` refers to the `Window` object in the browser.
+```js
+console.log(this) // Window
+```
+When `this` is called in a function, `this` is set to the global object.
+```js
+function hello () {
+    console.log(this)
+}
+hello() // Window
+```
+When `this` is called in an object method, `this` would be the object itself.
+```js
+let o = {
+    sayThis: function() {
+        console.log(this)
+    }
+}
+
+o.sayThis() // o
+```
+When the function is called as a constructor, `this` refers to the newly constructed object.
+```js
+function Person (age) {
+    this.age = age
+}
+let greg = new Person(22)
+let thomas = new Person(24)
+console.log(greg) // this.age = 22
+console.log(thomas) // this.age = 24
+```
+When used in an event listener, `this` is set to the element that fired the event.
+```js
+let button = document.querySelector('button')
+button.addEventListener('click', function() {
+    console.log(this) // button
+})
+```
+In arrow functions, `this` never gets bound to a new value, no matter how the function is called. `this` will always be the same `this` value as its surrounding code.
+
+#### rest parameters
+
+```js
+function f (x, y, ...rest) {
+    return (x + y) * rest.length
+}
+f(1, 2, "hello", true, 7) === 9
+```
+
+#### destructuring
+
+Array Matching
+```js
+var list = [ 1, 2, 3 ]
+var [ a, , b ] = list // a === 1, b === 3
+[ b, a ] = [ a, b ] // b === 1, a === 3
+```
+Object Matching, Shorthand Notation
+```js
+var { op, lhs, rhs } = getASTNode()
+```
+Object and Array Matching, Default values
+```js
+var obj = { a: 1 }
+var list = [ 1 ]
+var { a, b = 2 } = obj // a === 1, b === 2
+var [ x, y = 2 ] = list // x === 1, y === 2
+```
+
+#### sets
+
+```js
+let s = new Set()
+s.add("hello").add("goodbye").add("hello")
+s.size === 2 // no duplicate entries
+s.has("hello") === true
+for (let key of s.values()) // insertion order
+    console.log(key)
+```
+
+#### maps
+
+```js
+let m = new Map()
+let s = Symbol()
+m.set("hello", 42)
+m.set(s, 34)
+m.get(s) === 34
+m.size === 2
+for (let [ key, val ] of m.entries())
+    console.log(key + " = " + val)
+```
+
 ### Explain and demonstrate how es2015 supports modules (import and export) similar to what is offered by NodeJS.
+
+```js
+//  lib/math.js
+export function sum (x, y) { return x + y }
+export var pi = 3.141593
+
+//  someApp.js
+import * as math from "lib/math"
+console.log("2π = " + math.sum(math.pi, math.pi))
+
+//  otherApp.js
+import { sum, pi } from "lib/math"
+console.log("2π = " + sum(pi, pi))
+```
 
 ### Provide an example of ES6 inheritance and reflect over the differences between Inheritance in Java and in ES6.
 
+```js
+class Shape {
+    color;
+    constructor(color) {
+        this.color = color
+    }
+}
+
+class square extends Shape {
+    length;
+    constructor(color, length) {
+        super(color)
+        this.length = length
+    }
+}
+```
+
+JavaScript Object inheritance is Prototype based. ES6 classes are just syntactic sugar to make it look similar to OOP languages like Java. Behind the scene, no Class based inheritance but Prototype based inheritance.
+
 ### Provide examples with es-next, running in a browser, using Babel and Webpack
+
+
 
 ### Provide a number of examples to demonstrate the benefits of using TypeScript, including, types, interfaces, classes and generics
 
@@ -355,14 +508,53 @@ module.exports.makeCounter = function(){
 
 #### Example(s) that demonstrate how to implement our own promise-solutions.
 
+```js
+new Promise((resolve, reject) => {
+    // ...
+    if (err) return reject(err)
+    else return resolve(res)
+})
+```
+
 #### Example(s) that demonstrate error handling with promises
 
-### Explain about JavaScripts async/await, how it relates to promises and reasons to use it compared to the plain promise API.
+```js
+new Promise((resolve, reject) => {
+    // ...
+    if (err) return reject(err)
+    else return resolve(res)
+})
+```
+
+### Explain about JavaScripts async/await
+*How it relates to promises and reasons to use it compared to the plain promise API.*
+
+Async Await is syntactic sugar that changes the .then notation to more readable syntax. Instead of making a . connection between the promises the keyword awaitcan be used instead.
 
 ### Provide examples to demonstrate:
 
 #### Why this often is the preferred way of handling promises
 
+```js
+function async myFunc() {
+    const res = await fetch(...)
+    const json = res.json()
+    // ...
+}
+```
+
 #### Error handling with async/await
+
+```js
+function async myFunc() {
+    try {
+        const res = await fetch(...)
+        const json = res.json()
+        // ...
+    } catch (err) {
+        new Error(err)
+    } 
+}
+```
 
 #### Serial or parallel execution with async/await.
