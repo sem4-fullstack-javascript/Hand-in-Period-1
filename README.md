@@ -492,7 +492,7 @@ JavaScript Object inheritance is Prototype based. ES6 classes are just syntactic
 
 ### Provide examples with es-next, running in a browser, using Babel and Webpack
 
-[/TODO/](TODO.md)
+Examples can be found [here](https://github.com/sem4-fullstack-javascript/Hand-in-Period-1/tree/master/WebpackExercises)
 
 ### Provide a number of examples to demonstrate the benefits of using TypeScript, including, types, interfaces, classes and generics
 
@@ -591,7 +591,17 @@ doSomething()
 
 #### Example(s) that demonstrate how to execute asynchronous (promise-based) code in serial or parallel
 
-[/TODO/](TODO.md)
+```js
+var arrayOfPromises = [] // array containing promises
+
+Promise.all(arrayOfPromises)
+.then(function(arrayOfResults) {
+    /* Do something when all Promises are resolved */
+})
+.catch(function(err) {
+    /* Handle error is any of Promises fails */
+})
+```
 
 #### Example(s) that demonstrate how to implement our own promise-solutions.
 
@@ -670,4 +680,15 @@ function async myFunc() {
 
 #### Serial or parallel execution with async/await.
 
-[/TODO/](TODO.md)
+Async/await makes asynchronous code look and behave like synchronous code
+
+```js
+async function SerialFlow(){
+    let result1 = await doJob(1,1);
+    let result2 = await doJob(2,2);
+    let result3 = await doJob(3,3);
+    let finalResult = result1+result2+result3;
+    console.log(finalResult);
+    return finalResult; 
+}
+```
