@@ -17,7 +17,21 @@ const persons = [
 	new Person("John", "Hansen", "Socker")
 ];
 
+const cities = [
+	{ city: "Lyngby", zipCode: "2800" },
+	{ city: "Hvidovre", zipCode: "2650" },
+	{ city: "Glostrup", zipCode: "2600" }
+];
+
+const hobbies = [
+	{ name: "football", players: 22 },
+	{ name: "chess", players: 2 },
+	{ name: "boxing", players: 2 }
+];
+
 const table = makeTable(persons);
+//const table = makeTable(cities);
+//const table = makeTable(hobbies);
 document.getElementById("my-table").innerHTML = table;
 
 function makeTable(data) {
@@ -33,5 +47,7 @@ function makeTable(data) {
 		return `<tr>${str}</tr>`;
 	});
 	// Make the table with the header and body. Provide the table element with class="table" to style with Bootstrap
-	return `<table class=table><thead>${tableHeaders}</thead><tbody>${values.join()}</tbody></table>`;
+	let table = `<table class=table><thead>${tableHeaders}</thead><tbody>${values.join()}</tbody></table>`;
+	//console.log(table);
+	return table;
 }
