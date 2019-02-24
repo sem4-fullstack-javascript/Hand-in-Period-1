@@ -23,7 +23,7 @@ document.getElementById("my-table").innerHTML = table;
 function makeTable(data) {
 	// Make the header for the table
 	let keys = _.keys(data[0]);
-	const tableHeaders = keys.map(d => `<td>${_.startCase(d)}</td>`);
+	const tableHeaders = keys.map(d => `<th>${_.startCase(d)}</th>`);
 	// Make the body for the table
 	let values = data.map(d => {
 		let str = "";
@@ -32,6 +32,6 @@ function makeTable(data) {
 		}
 		return `<tr>${str}</tr>`;
 	});
-	// Make the table with the header and body. Provide the table element with class="table"
-	// to style with Bootstrap
+	// Make the table with the header and body. Provide the table element with class="table" to style with Bootstrap
+	return `<table class=table><thead>${tableHeaders}</thead><tbody>${values.join()}</tbody></table>`;
 }
